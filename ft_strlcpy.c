@@ -6,24 +6,39 @@
 /*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:56:16 by miakubov          #+#    #+#             */
-/*   Updated: 2025/04/05 14:09:55 by miakubov         ###   ########.fr       */
+/*   Updated: 2025/04/06 12:41:25 by miakubov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlcpy(char *dst, const char *src, size_t size)
+#include <stddef.h>
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
-	int		j;
+	size_t	j;
 
 	i = 0;
 	j = 0;
 	while (src[j] != '\0')
 		j++;
-	while (i < size - 1 && src[i] != '\0')
+	if (size > 0)
 	{
-		dst[i] = src[i];
-		i++;
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	dst[i] = '\0';
 	return (j);
 }
+/*
+#include <stdio.h>
+int main() {
+    char dst[20];
+    const char *src = "Hello, World!";
+    ft_strlcpy(dst, src, 20);
+    printf("%s\n", dst);
+
+    return 0;
+}*/

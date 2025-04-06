@@ -6,16 +6,30 @@
 /*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 12:07:34 by miakubov          #+#    #+#             */
-/*   Updated: 2025/04/05 12:08:51 by miakubov         ###   ########.fr       */
+/*   Updated: 2025/04/06 10:38:19 by miakubov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *s)
+#include <stddef.h>
+
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
 		i++;
 	return (i);
 }
+/*
+#include <stdio.h>
+#include <string.h>
+
+int	main()
+{
+	char str[] = "This is example string";
+
+	printf("%zu\n", strlen(str));
+	printf("%zu\n", ft_strlen(str));
+	return (0);
+}*/

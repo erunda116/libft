@@ -6,7 +6,7 @@
 /*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 12:03:28 by miakubov          #+#    #+#             */
-/*   Updated: 2025/04/05 12:06:55 by miakubov         ###   ########.fr       */
+/*   Updated: 2025/04/06 10:14:07 by miakubov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,3 +17,21 @@ int	ft_isprint(int c)
 	else
 		return (0);
 }
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int	main()
+{
+	char f = '\t';
+	if (isprint(f))
+		printf("printable\n");
+	else
+		printf("not printable\n");
+	if (ft_isprint(f))
+                printf("printable\n");
+        else
+                printf("not printable\n");
+
+	return (0);
+}*/

@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/07 13:53:54 by miakubov          #+#    #+#             */
-/*   Updated: 2025/04/07 14:00:55 by miakubov         ###   ########.fr       */
+/*   Created: 2025/04/07 15:35:05 by miakubov          #+#    #+#             */
+/*   Updated: 2025/04/07 15:41:08 by miakubov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+#include <stddef.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	**ft_split(char const *s, char c)
 {
-	char	*substring;
+	size_t	size;
 	size_t	i;
+	char	**arr;
 
 	i = 0;
-	substring = malloc((len + 1) * sizeof(char));
-	if (!substring)
-		return (NULL);
-	while (len > 0)
+	size = 0;
+	while (s[i] != '\0')
 	{
-		substring[i] = s[start];
-		start++;
-		len--;
+		if (s[i] != c)
+			size++;
 		i++;
 	}
-	substring[i] = '\0';
-	return (substring);
+	arr = malloc(size * sizeof(char));
+	if (!arr)
+		return (NULL);
+
 }
-/*
-#include <stdio.h>
-int main()
-{
-    char s[] = "Hello, World!";
-    char *sub = ft_substr("Hello, world!", 7, 5);
-    printf("%s\n", sub);
-}*/
+

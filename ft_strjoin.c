@@ -1,46 +1,60 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/07 14:20:22 by miakubov          #+#    #+#             */
+/*   Updated: 2025/04/07 14:30:35 by miakubov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char    *ft_strjoin(char const *s1, char const *s2)
+#include "libft.h"
+
+static size_t	ft_strlen(const char *str)
 {
-    char *joinedstr;
-    size_t size;
-    size_t  i;
-    size_t j;
-    const char *p1;
-    const char *p2;
+	size_t	i;
 
-    p1 = s1;
-    p2 = s2;
-    size = 0;
-    i = 0;
-    j = 0;
-    while (*p1++)
-        size++;
-    while (*p2++)
-        size++;
-    joinedstr = malloc((size + 1) * sizeof(char));
-    if (!joinedstr)
-        return (NULL);
-    while (s1[i] != '\0')
-    {
-        joinedstr[i] = s1[i];
-        i++;
-    }
-    while (s2[j] != '\0')
-    {
-        joinedstr[i] = s2[j];
-        i++;
-        j++;
-    }
-    joinedstr[i] = '\0';
-    return (joinedstr);
+	i = 0;
+	while (str[i] != 0)
+		i++;
+	return (i);
 }
 
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	size_t	all_size;
+	size_t	i;
+	size_t	j;
+	char	*result;
+
+	i = 0;
+	j = 0;
+	all_size = ft_strlen(s1) + ft_strlen(s2);
+	result = malloc((all_size + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		result[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		result[i] = s2[j];
+		i++;
+		j++;
+	}
+	result[i] = '\0';
+	return (result);
+}
+/*
 #include <stdio.h>
-int main()
+int	main()
 {
-    char s1[] = "Hello, World!";
-    char s2[] = " This is joined string!";
-    char *res = ft_strjoin(s1, s2);
-    printf("%s\n", res);
-}
+	char s1[] = "Hello ";
+	char s2[] = "World!";
+	char *res = ft_strjoin(s1, s2);
+	printf("%s\n", res);
+}*/

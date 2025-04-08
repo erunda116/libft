@@ -4,10 +4,13 @@ NAME = libft.a
 HEADER_FILES = libft.h
 SRC = $(wildcard ft_*.c)
 OBJ = $(SRC:.c=.o)
-$(OBJ): %.o: %.c $(HEADER_FILES)
+%.o: %.c $(HEADER_FILES)
 	$(CC) $(FLAGS) -I. -c $< -o $@
 $(NAME): $(OBJ)
 	ar -rc $@ $(OBJ)
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJ)
 all: $(NAME)
 re: fclean all
 clean:

@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 14:32:58 by miakubov          #+#    #+#             */
-/*   Updated: 2025/04/06 14:18:21 by miakubov         ###   ########.fr       */
+/*   Created: 2025/04/08 22:06:26 by miakubov          #+#    #+#             */
+/*   Updated: 2025/04/08 22:07:39 by miakubov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
+#include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
-			return ((char *)(s + i));
+		write(fd, &s[i], 1);
 		i++;
 	}
-	if (c == '\0')
-		return ((char *)(s + i));
-	return (NULL);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-
-int	main()
-{
-	const char str[] = "Hello World!";
-	char c = 'o';
-	const char *res = ft_strchr(str, c);
-	const char *test = strchr(str, c);
-	printf("%c\n", *res);
-	printf("%c", *test);
-	return (0);
-}*/

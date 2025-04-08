@@ -26,7 +26,7 @@ static int	is_in_set(const char *set, char c)
 	return (0);
 }
 
-static	size_t	ft_strlen(const char *str)
+static	size_t	ft_strlen_trim(const char *str)
 {
 	size_t	i;
 
@@ -64,7 +64,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	start = 0;
-	end = ft_strlen(s1);
+	end = ft_strlen_trim(s1);
 	while (is_in_set(set, s1[i]))
 	{
 		i++;

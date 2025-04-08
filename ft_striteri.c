@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 14:32:58 by miakubov          #+#    #+#             */
-/*   Updated: 2025/04/06 14:18:21 by miakubov         ###   ########.fr       */
+/*   Created: 2025/04/08 21:51:49 by miakubov          #+#    #+#             */
+/*   Updated: 2025/04/08 21:56:23 by miakubov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
+#include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
-			return ((char *)(s + i));
+		f(i, &s[i]);
 		i++;
 	}
-	if (c == '\0')
-		return ((char *)(s + i));
-	return (NULL);
 }
 /*
-#include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 
-int	main()
+void to_upper_even(unsigned int i, char *c)
 {
-	const char str[] = "Hello World!";
-	char c = 'o';
-	const char *res = ft_strchr(str, c);
-	const char *test = strchr(str, c);
-	printf("%c\n", *res);
-	printf("%c", *test);
-	return (0);
+    if (i % 2 == 0)
+        *c = toupper(*c);
+}
+
+int main(void)
+{
+    char str[] = "abcdef";
+    ft_striteri(str, to_upper_even);
+    printf("%s\n", str); // Выведет: "AbCdEf"
+    return 0;
 }*/

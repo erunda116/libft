@@ -17,7 +17,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	dest_size;
 	size_t	src_size;
 	size_t	i;
-
+	
+	if (dst == NULL || src == NULL)
+		return (0);
 	dest_size = 0;
 	src_size = 0;
 	i = 0;
@@ -33,7 +35,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		i++;
 	}
 	dst[dest_size + i] = '\0';
-	return (dest_size);
+	return (dest_size + src_size);
 }
 /*#include <stdio.h>
 

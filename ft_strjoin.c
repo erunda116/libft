@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static size_t	ft_strlen(const char *str)
+static size_t	ft_strlen_join(const char *str)
 {
 	size_t	i;
 
@@ -31,7 +31,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	all_size = ft_strlen(s1) + ft_strlen(s2);
+	all_size = ft_strlen_join(s1) + ft_strlen_join(s2);
 	result = malloc((all_size + 1) * sizeof(char));
 	if (!result)
 		return (NULL);

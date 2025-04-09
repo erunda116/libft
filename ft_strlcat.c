@@ -6,7 +6,7 @@
 /*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 14:10:55 by miakubov          #+#    #+#             */
-/*   Updated: 2025/04/06 13:29:51 by miakubov         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:26:39 by miakubov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	dest_size;
 	size_t	src_size;
 	size_t	i;
-	
-	if (dst == NULL || src == NULL)
-		return (0);
+
 	dest_size = 0;
 	src_size = 0;
 	i = 0;

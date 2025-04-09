@@ -6,7 +6,7 @@
 /*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:35:05 by miakubov          #+#    #+#             */
-/*   Updated: 2025/04/08 15:33:44 by miakubov         ###   ########.fr       */
+/*   Updated: 2025/04/09 18:50:39 by miakubov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,52 +35,71 @@ static int	count_words(char const *s, char c)
 	return (count);
 }
 
-static char	*ft_strdup_sep(const char *s, size_t start, size_t end)
-{
-	size_t	size;
-	size_t	i;
-	char	*copy;
-
-	i = 0;
-	size = end - start;
-	copy = malloc((size + 1) * sizeof(char));
-	if (!copy)
-		return (NULL);
-	while (start < end)
-	{
-		copy[i] = s[start];
-		start++;
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
-}
-
-static char	**helping_func(char const *s, char c, char **res, int index)
+static size_t	ft_strlcpy_split(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
-	size_t	end;
 
 	i = 0;
 	j = 0;
-	while (s[i] != '\0')
+	while (src[j] != '\0')
+		j++;
+	if (size > 0)
 	{
-		if (s[i] != c && index == -1)
-			index = i;
-		else if ((s[i] == c || s[i + 1] == '\0') && index != -1)
+		while (i < size - 1 && src[i] != '\0')
 		{
-			if (s[i] == c)
-				end = i;
-			else
-				end = i + 1;
-			res[j++] = ft_strdup_sep(s, index, end);
-			index = -1;
+			dst[i] = src[i];
+			i++;
 		}
-		i++;
+		dst[i] = '\0';
 	}
-	res[j] = NULL;
-	return (res);
+	return (j);
+}
+
+static	int	al_malloc(char **res, int index, size_t buffer)
+{
+	int	i;
+
+	i = 0;
+	res[index] = malloc(buffer);
+	if (NULL == res[index])
+	{
+		while (i < index)
+		{
+			free(res[i]);
+			i++;
+		}
+		free(res);
+		return (1);
+	}
+	return (0);
+}
+
+static int	fill(char **res, char const *s, char c)
+{
+	size_t	len;
+	int		i;
+
+	i = 0;
+	while (*s)
+	{
+		len = 0;
+		while (*s == c && *s)
+			++s;
+		while (*s != c && *s)
+		{
+			++len;
+			++s;
+		}
+		if (len)
+		{
+			if (al_malloc(res, i, len + 1))
+				return (1);
+			ft_strlcpy_split(res[i], s - len, len + 1);
+			i++;
+		}
+	}
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
@@ -88,11 +107,15 @@ char	**ft_split(char const *s, char c)
 	char	**res;
 	int		words_counter;
 
+	if (!s)
+		return (NULL);
 	words_counter = count_words(s, c);
-	res = malloc((words_counter + 1) * sizeof(char));
+	res = malloc((words_counter + 1) * sizeof(char *));
 	if (!res)
 		return (NULL);
-	res = helping_func(s, c, res, -1);
+	res[words_counter] = NULL;
+	if (fill(res, s, c))
+		return (NULL);
 	return (res);
 }
 /*
@@ -100,9 +123,8 @@ char	**ft_split(char const *s, char c)
 
 int	main()
 {
-	char s[] = "  Hello   world   blabla  ";
+	char s[] = "   lorem   ipsumendisse   ";
 	char **test = ft_split(s, ' ');
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; test[i] != NULL; i++)
 		printf("%s\n", test[i]);
-}
-*/
+}*/

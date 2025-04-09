@@ -6,25 +6,15 @@
 /*   By: miakubov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:34:57 by miakubov          #+#    #+#             */
-/*   Updated: 2025/04/06 12:19:36 by miakubov         ###   ########.fr       */
+/*   Updated: 2025/04/09 12:24:24 by miakubov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+static void	full_mem(unsigned char *dest1, const unsigned char *src1,
+size_t i, size_t n)
 {
-	const unsigned char	*src1;
-	unsigned char		*dest1;
-	size_t				i;
-
-	dest1 = (unsigned char *)dest;
-	src1 = (const unsigned char *)src;
-	i = 0;
-	if (!dest || !src)
-		return (NULL);
-	if (n == 0)
-		return (dest);
 	if (dest1 < src1)
 	{
 		while (i < n)
@@ -41,6 +31,20 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			n--;
 		}
 	}
+}
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	const unsigned char	*src1;
+	unsigned char		*dest1;
+	size_t				i;
+
+	if (n == 0 || dest == src)
+		return (dest);
+	dest1 = (unsigned char *)dest;
+	src1 = (const unsigned char *)src;
+	i = 0;
+	full_mem(dest1, src1, i, n);
 	return (dest);
 }
 /*

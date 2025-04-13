@@ -21,13 +21,15 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dest_size = 0;
 	src_size = 0;
 	i = 0;
+	if (dst == NULL && size == 0)
+		return (0);
 	while (dst[dest_size] != '\0' && dest_size < size)
 		dest_size++;
 	while (src[src_size] != '\0')
 		src_size++;
 	if (size <= dest_size)
 		return (size + src_size);
-	while (i < size - dest_size - 1 && src[i] != '\0')
+	while ((dest_size + i) < (size - 1) && src[i] != '\0')
 	{
 		dst[dest_size + i] = src[i];
 		i++;
@@ -35,13 +37,20 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[dest_size + i] = '\0';
 	return (dest_size + src_size);
 }
-/*#include <stdio.h>
-
+/*
+#include <stdio.h>
+#include <string.h>
 int main() {
-    char dst[30] = "Hello, ";
-    const char *src = "World!";
+    char dst[30];
+    const char *src = "lorem ipsum dolor sit amet!";
     size_t size = sizeof(dst);
-    ft_strlcat(dst, src, size);
-    printf("%s\n", dst);;
+    
+    char dst1[30];
+    const char *src1 = "lorem ipsum dolor sit amet!";
+    size_t size1 = sizeof(dst1);
+    ft_strlcat(dst, src, 0);
+    strlcat(dst1, src1, 0);
+    printf("%s\n", dst);
+    printf("%s\n", dst1);
     return 0;
 }*/

@@ -53,5 +53,4 @@ int main(void)
     printf("Original: %s\nMapped:   %s\n", s, mapped);
     free(mapped);
     return 0;
-}
-*/
+}*/

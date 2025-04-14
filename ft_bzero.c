@@ -25,30 +25,26 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
-/*
-#include <stdio.h>
-#include <strings.h>
-#include <unistd.h>
+/*#include <stdio.h>
+#include <string.h>
 
-int main()
+int main(void)
 {
     char s[] = "Test string";
-    ft_bzero(s, 5);
+    ft_bzero(s, 5);  
+    printf("ft_bzero result:\n");
     for (size_t i = 0; i < sizeof(s) - 1; i++) {
-        char buffer[4];
-        int len; 
-	len = snprintf(buffer, sizeof(buffer), "%d ", (unsigned char)s[i]);         
-       	write(1, buffer, len);
+        printf("%d ", (unsigned char)s[i]);
     }
-    write(1, "\n", 1);
+    printf("\n");
+
     char l[] = "Test string";
-    bzero(l, 5);
+    bzero(l, 5); 
+    printf("bzero result:\n");
     for (size_t i = 0; i < sizeof(l) - 1; i++) {
-        char buffer[4]; 
-        int len;
-len = snprintf(buffer, sizeof(buffer), "%d ", (unsigned char)l[i]);          
-        write(1, buffer, len);  
+        printf("%d ", (unsigned char)l[i]);
     }
-    write(1, "\n", 1); 
+    printf("\n");
+
     return 0;
 }*/

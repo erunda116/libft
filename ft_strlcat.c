@@ -44,13 +44,7 @@ int main() {
     char dst[30];
     const char *src = "lorem ipsum dolor sit amet!";
     size_t size = sizeof(dst);
-    
-    char dst1[30];
-    const char *src1 = "lorem ipsum dolor sit amet!";
-    size_t size1 = sizeof(dst1);
-    ft_strlcat(dst, src, 0);
-    strlcat(dst1, src1, 0);
+    ft_strlcat(dst, src, 15);
     printf("%s\n", dst);
-    printf("%s\n", dst1);
     return 0;
 }*/

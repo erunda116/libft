@@ -16,3 +16,21 @@ void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
+/*#include <fcntl.h>   
+#include <unistd.h> 
+
+int	main(void)
+{
+	ft_putchar_fd('A', 1);
+	write(1, "\n", 1);
+
+	int	fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		write(2, "Error opening file\n", 20);
+		return (1);
+	}
+	ft_putchar_fd('Z', fd);
+	close(fd);
+	return (0);
+}*/

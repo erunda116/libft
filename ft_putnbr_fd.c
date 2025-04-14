@@ -31,3 +31,19 @@ void	ft_putnbr_fd(int n, int fd)
 	n = n % 10 + '0';
 	write(fd, &n, 1);
 }
+/*#include <fcntl.h>
+#include <unistd.h>
+int main()
+{
+	ft_putnbr_fd(3456, 1);
+	
+	int	fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		write(2, "Error opening file\n", 20);
+		return (1);
+	}
+	ft_putnbr_fd(3456, fd);
+	close(fd);
+	return (0);
+}*/

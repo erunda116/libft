@@ -93,6 +93,7 @@ char	*ft_itoa(int n)
 	return (res);
 }
 /*
+#include <stdio.h>
 int	main()
 {
 	int n = 34576;

@@ -24,3 +24,19 @@ void	ft_putendl_fd(char *s, int fd)
 	}
 	write(fd, "\n", 1);
 }
+/*#include <fcntl.h>
+#include <unistd.h>
+int main()
+{
+	ft_putendl_fd("some string", 1);
+	
+	int	fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		write(2, "Error opening file\n", 20);
+		return (1);
+	}
+	ft_putendl_fd("Some string in the file with a new line", fd);
+	close(fd);
+	return (0);
+}*/

@@ -23,3 +23,19 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
+/*#include <fcntl.h>
+#include <unistd.h>
+int main()
+{
+	ft_putstr_fd("Some string on std output", 1);
+	
+	int	fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		write(2, "Error opening file\n", 20);
+		return (1);
+	}
+	ft_putstr_fd("Some string on the file", fd);
+	close(fd);
+	return (0);
+}*/

@@ -24,3 +24,34 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (c);
 }
+/*
+#include <stdio.h>
+
+t_list	*ft_lstnew_test(void *content)
+{
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
+}
+
+int main()
+
+{
+    t_list *head = ft_lstnew_test("First");
+    t_list *second = ft_lstnew_test("Second");
+    t_list *third = ft_lstnew_test("Third");
+
+    head->next = second;
+    second->next = third;
+    third->next = NULL;
+    
+    int size = ft_lstsize(head);
+    printf("Size of list: %d\n", size);
+	return (0);
+}
+*/

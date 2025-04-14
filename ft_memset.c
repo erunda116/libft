@@ -37,7 +37,7 @@ int	main()
 
 	ft_memset(stroka, 'X', 10);
 	printf("%s\n", stroka);
-	memset(stroka, 'Y', 10);
+	memset(stroka, 'X', 10);
 	printf("%s\n", stroka);
 	return (0);
 }*/

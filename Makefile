@@ -55,8 +55,11 @@ all:		${NAME}
 $(NAME):	${OBJ} ${HEADER}
 			ar rcs ${NAME} ${OBJ}
 
-bonus:		${OBJ_BONUS} ${HEADER}
+bonus:		.bonus
+
+.bonus: 	${OBJ_BONUS} ${HEADER}
 			ar rcs ${NAME} ${OBJ_BONUS}
+			touch .bonus
 
 clean:
 			rm -f ${OBJ} ${OBJ_BONUS}

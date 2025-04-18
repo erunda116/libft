@@ -63,6 +63,7 @@ bonus:		.bonus
 
 clean:
 			rm -f ${OBJ} ${OBJ_BONUS}
+			rm -f .bonus
 fclean:		clean
 			rm -f ${NAME}
 

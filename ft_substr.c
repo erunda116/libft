@@ -36,15 +36,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (substring);
 	}
 	i = 0;
+	if (len > ft_strlen_substr(s) - start)
+		len = ft_strlen_substr(s) - start;
 	substring = malloc((len + 1) * sizeof(char));
 	if (!substring)
 		return (NULL);
-	while (len > 0)
+	while (len > 0 && s[start] != '\0')
 	{
-		substring[i] = s[start];
-		start++;
+		substring[i++] = s[start++];
 		len--;
-		i++;
 	}
 	substring[i] = '\0';
 	return (substring);
@@ -53,6 +53,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 #include <stdio.h>
 int main()
 {
-    char *sub = ft_substr("Hello, world!", 7, 5);
+    char *sub = ft_substr("hola", 0, 18446744073709551615);
     printf("%s\n", sub);
 }*/

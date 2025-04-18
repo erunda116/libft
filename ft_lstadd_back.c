@@ -14,15 +14,19 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
+	t_list	*temp;
+
+	if (!lst || !new)
+		return ;
 	if (*lst == NULL)
 	{
 		*lst = new;
 		return ;
 	}
-	while ((*lst)->next != NULL)
-		lst = &(*lst)->next;
-	(*lst)->next = new;
-	new->next = NULL;
+	temp = *lst;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = new;
 }
 /*
 #include <stdio.h>
@@ -44,15 +48,18 @@ int	main()
     t_list *head = ft_lstnew_test("First");
     t_list *second = ft_lstnew_test("Second");
     t_list *third = ft_lstnew_test("Third");
+    t_list *four = ft_lstnew_test("Four");
 
     head->next = second;
     second->next = third;
-    third->next = NULL;
+    third->next = four;
+    four->next = NULL;
 
     printf("Original list:\n");
     printf("%s -> ", (char *)head->content);
     printf("%s -> ", (char *)head->next->content);
-    printf("%s -> NULL\n", (char *)head->next->next->content);
+    printf("%s -> ", (char *)head->next->next->content);
+    printf("%s -> NULL\n", (char *)head->next->next->next->content);
 
     t_list *new_node = ft_lstnew_test("New Node");
 
@@ -62,9 +69,8 @@ int	main()
     printf("%s -> ", (char *)head->content);                 
     printf("%s -> ", (char *)head->next->content);             
     printf("%s -> ", (char *)head->next->next->content);       
-    printf("%s -> NULL\n", (char *)head->next->next->next->content); 
-
- 
+    printf("%s -> ", (char *)head->next->next->next->content);
+    printf("%s -> NULL\n", (char *)head->next->next->next->next->content); 
 
     return 0;
 }*/

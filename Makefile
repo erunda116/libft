@@ -1,4 +1,4 @@
-SRCS		= ft_atoi.c \
+SRC		= ft_atoi.c \
 			  ft_bzero.c \
 			  ft_calloc.c \
 			  ft_isalnum.c \
@@ -32,7 +32,7 @@ SRCS		= ft_atoi.c \
 			  ft_substr.c \
 			  ft_tolower.c \
 			  ft_toupper.c
-SRCS_BONUS	= ft_lstadd_back.c \
+SRC_BONUS	= ft_lstadd_back.c \
 			  ft_lstadd_front.c \
 			  ft_lstclear.c \
 			  ft_lstdelone.c \
@@ -41,26 +41,25 @@ SRCS_BONUS	= ft_lstadd_back.c \
 			  ft_lstmap.c \
 			  ft_lstnew.c \
 			  ft_lstsize.c
-OBJS		= ${SRCS:.c=.o}
-OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
+OBJ		= ${SRC:.c=.o}
+OBJ_BONUS	= ${SRC_BONUS:.c=.o}
 NAME		= libft.a
 HEADER		= libft.h
-CCFLAG			= cc -Wall -Wextra -Werror
-
+CC			= cc 
+CFLAGS 		= -Wall -Wextra -Werror
 %.o: %.c libft.h
-			${CCFLAG} -I. -c $< -o ${<:.c=.o}
+			${CC}${CFLAGS} -I. -c $< -o ${<:.c=.o}
 
 all:		${NAME}
 
-$(NAME):	${OBJS} ${HEADER}
-			ar rcs ${NAME} ${OBJS}
+$(NAME):	${OBJ} ${HEADER}
+			ar rcs ${NAME} ${OBJ}
 
-bonus:		${OBJS_BONUS} ${HEADER}
-			ar rcs ${NAME} ${OBJS_BONUS}
+bonus:		${OBJ_BONUS} ${HEADER}
+			ar rcs ${NAME} ${OBJ_BONUS}
 
 clean:
-			rm -f ${OBJS} ${OBJS_BONUS}
-
+			rm -f ${OBJ} ${OBJ_BONUS}
 fclean:		clean
 			rm -f ${NAME}
 
